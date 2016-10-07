@@ -217,8 +217,7 @@ public class MainFrame extends javax.swing.JFrame {
             tablePane.setPreferredSize(new Dimension(ancho_tablePane,alto_tablePane));
             tableInternalFrame.setPreferredSize(new Dimension(ancho_tableInternalFrame,alto_tableInternalFrame));
             
-            
-            
+                        
             //tableInternalFrame.pack();            
             //int locX=(this.getWidth()-tableInternalFrame.getWidth())/2;
             //int locY=(this.getHeight()-tableInternalFrame.getHeight())/2;
