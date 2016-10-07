@@ -5,9 +5,13 @@
  */
 package es.osvaldograna.PIC.gui;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,6 +38,9 @@ public class MainFrame extends javax.swing.JFrame {
         openPanel = new javax.swing.JPanel();
         openPanel.setVisible(false);
         fileChooser = new javax.swing.JFileChooser();
+        tableInternalFrame = new javax.swing.JInternalFrame();
+        tablePane = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
         jMenuBar = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
         Select = new javax.swing.JMenuItem();
@@ -42,9 +49,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PIC");
-        setPreferredSize(new java.awt.Dimension(1500, 756));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        openPanel.setBackground(new java.awt.Color(242, 240, 240));
         openPanel.setPreferredSize(new java.awt.Dimension(200, 468));
 
         fileChooser.setFileFilter(new MyCustomFilter());
@@ -59,22 +65,70 @@ public class MainFrame extends javax.swing.JFrame {
         openPanel.setLayout(openPanelLayout);
         openPanelLayout.setHorizontalGroup(
             openPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
             .addGroup(openPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(openPanelLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(fileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(35, Short.MAX_VALUE)))
+                    .addContainerGap(154, Short.MAX_VALUE)))
         );
         openPanelLayout.setVerticalGroup(
             openPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
             .addGroup(openPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(openPanelLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(fileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(31, Short.MAX_VALUE)))
+                    .addContainerGap(191, Short.MAX_VALUE)))
         );
+
+        getContentPane().add(openPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 460, 450));
+
+        tableInternalFrame.setClosable(true);
+        tableInternalFrame.setIconifiable(true);
+        tableInternalFrame.setMaximizable(true);
+        tableInternalFrame.setResizable(true);
+        tableInternalFrame.setVisible(false);
+
+        tablePane.setBorder(null);
+        tablePane.setViewportBorder(null);
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tablePane.setViewportView(table);
+
+        javax.swing.GroupLayout tableInternalFrameLayout = new javax.swing.GroupLayout(tableInternalFrame.getContentPane());
+        tableInternalFrame.getContentPane().setLayout(tableInternalFrameLayout);
+        tableInternalFrameLayout.setHorizontalGroup(
+            tableInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(tableInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tableInternalFrameLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        tableInternalFrameLayout.setVerticalGroup(
+            tableInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(tableInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tableInternalFrameLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        getContentPane().add(tableInternalFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FileMenu.setText("File");
 
@@ -101,31 +155,82 @@ public class MainFrame extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 118, Short.MAX_VALUE)
-                .addComponent(openPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 118, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 133, Short.MAX_VALUE)
-                .addComponent(openPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 134, Short.MAX_VALUE))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void SelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectActionPerformed
-        openPanel.setVisible(true);
-        int returnVal = fileChooser.showOpenDialog(this);
+        fileChooser.setMultiSelectionEnabled(true);
+        
+        int returnVal = fileChooser.showOpenDialog(this);        
+        
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
+            File[] files = fileChooser.getSelectedFiles();
+            //data has two columns
+            Object [][] data= new Object[files.length][2];
+           
+            int maxPathLength=0;
+            int maxNameLength=0;
+            
+            for(int counter=0;counter<files.length;counter++){                
+                String path = files[counter].getAbsolutePath();
+                path=path.substring(0,path.lastIndexOf(File.separator));
+                String name=files[counter].getName();
+                
+                data[counter][0]=path;
+                data[counter][1]=name;               
+                
+                if(path.length()>maxPathLength) maxPathLength=path.length();
+                if(name.length()>maxNameLength) maxNameLength=name.length();            
+            }
+            
+            String [] columnNames={"Location","Name"};            
+            //table.getColumnModel().getColumn(0).setPreferredWidth(maxPathLength+maxNameLength);
+            //table.getColumnModel().getColumn(1).setPreferredWidth(maxPathLength+maxNameLength);
+         
+            DefaultTableModel model=(DefaultTableModel) table.getModel();
+            model.setColumnIdentifiers(columnNames);
+            
+            int fontSize=table.getFont().getSize();
+            
+            //borro filas existentes en la tabla si están vacías
+            for(int counter=model.getRowCount()-1;counter>=0;counter--){               
+                model.removeRow(counter);
+            }
+  
+            int a=model.getRowCount();
+            
+            for (Object[] row : data) {
+                model.addRow(row);
+            }
+                        
+            table.setPreferredSize(new Dimension(table.getColumnModel().getColumn(0).getPreferredWidth()*2,data.length*18));
+            
+            //tomo dimensiones del frame principal            
+            /*int ancho_tableInternalFrame=new Double(this.getSize().getWidth()-50).intValue();
+            int alto_tableInternalFrame=new Double(this.getSize().getHeight()-50).intValue();
+            int ancho_tablePane=ancho_tableInternalFrame-35;
+            int alto_tablePane=alto_tableInternalFrame-35;*/
+            int ancho_tablePane=(maxPathLength+maxNameLength)*(fontSize-(fontSize/3));
+            int alto_tablePane=(data.length+20)*8;
+            int ancho_tableInternalFrame=ancho_tablePane+35;
+            int alto_tableInternalFrame=alto_tablePane+50;
+            tablePane.setPreferredSize(new Dimension(ancho_tablePane,alto_tablePane));
+            tableInternalFrame.setPreferredSize(new Dimension(ancho_tableInternalFrame,alto_tableInternalFrame));
+            
+            
+            
+            //tableInternalFrame.pack();            
+            //int locX=(this.getWidth()-tableInternalFrame.getWidth())/2;
+            //int locY=(this.getHeight()-tableInternalFrame.getHeight())/2;
+            //tableInternalFrame.setLocation(locX,locY);
+            //tablePane.setSize(new Dimension(ancho_tablePane,alto_tablePane));   
+            
+            tableInternalFrame.setVisible(true);
+            
+            revalidate();
+            repaint();
+    
+
     //        try {
     //          // What to do with the file, e.g. display it in a TextArea
     //         // textarea.read( new FileReader( file.getAbsolutePath() ), null );
@@ -189,6 +294,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JPanel openPanel;
+    private javax.swing.JTable table;
+    private javax.swing.JInternalFrame tableInternalFrame;
+    private javax.swing.JScrollPane tablePane;
     // End of variables declaration//GEN-END:variables
 }
 
